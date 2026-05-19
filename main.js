@@ -140,7 +140,14 @@ function getFrequency(bin) {
 
 function mapZ(freq) {
 
-  return Math.log2(freq + 1) * 1.5;
+  const minFreq = 20;
+  const maxFreq = 20000;
+
+  const normalized =
+    (Math.log2(freq + 1) - Math.log2(minFreq)) /
+    (Math.log2(maxFreq) - Math.log2(minFreq));
+
+  return normalized * 25;
 }
 
 /* ---------------- Animation ---------------- */
